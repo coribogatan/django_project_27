@@ -6,11 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <!--
-    {% for i in list1 %}
-        <p> {{ i }} </p>
-    {% endfor %}
-    -->
+        <a href="{% url 'home' %}">Home</a>
+    {# {% for i in list1 %}#}
+        {#<p> {{ i }} </p>#}
+    {#{% endfor %}   #}
      <h1>Create Book:</h1>
   <form method="post">
     {% csrf_token %}
