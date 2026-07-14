@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import BookForm
 from .models import Book
@@ -35,3 +35,12 @@ def create_book(request: HttpRequest):
         form = BookForm()
         list1 = [10, 20, 30, 40]
         return render(request, "books/book_form.html", context={"form": form, 'list1': list1})
+
+def delete_book(request: HttpRequest, pk: int):
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == "POST":
+        book.delete()
+        return redirect("home")
+    else:
+        return render(request, "books/book_confirm_delete.html", context={"book": book})
+
