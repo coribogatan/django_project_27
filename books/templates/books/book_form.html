@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-=1">
-    <title>Document</title>
-</head>
-<body>
-        <a href="{% url 'home' %}">Home</a>
+{% extends "books/base.html" %}
+
+{% block title %}
+Create Book
+{% endblock %}
+
+{% block content %}
+
     {# {% for i in list1 %}#}
         {#<p> {{ i }} </p>#}
     {#{% endfor %}   #}
-     <h1>Create Book:</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
-</body>
-</html>
+    <h1>Create Book:</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+{% endblock %}
+

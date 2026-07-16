@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Book Mnager 1.0</title>
-</head>
-<body>
+{% extends "books/base.html" %}
 
-    <!-- cod html semantic -->
+{% block title %}
+Home
+{% endblock %}
 
-    <a href="{% url 'create_book' %}">Create Book</a>
+{% block content %}
+  <!-- cod html semantic -->
 
     <ul>
         {% for b in books %}
@@ -16,7 +13,4 @@
         {% endfor %}
     </ul>
 
-
-
-</body>
-</html>
+{% endblock %}
