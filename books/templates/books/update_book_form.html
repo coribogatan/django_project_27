@@ -1,0 +1,20 @@
+{% extends "books/base.html" %}
+
+{% block title %}
+Update Book
+{% endblock %}
+
+{% block content %}
+
+    {# {% for i in list1 %}#}
+        {#<p> {{ i }} </p>#}
+    {#{% endfor %}   #}
+    <h1>Update Book:</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+{% endblock %}
+
