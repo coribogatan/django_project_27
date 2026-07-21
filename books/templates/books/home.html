@@ -7,6 +7,28 @@ Home
 {% block content %}
   <!-- cod html semantic -->
 
+    <label for="sort">Sort by:</label>
+    <select id="sort" onchange="changeSort()">
+
+        <option value="asc">Title A->Z</option>
+        <option value="desc">Title Z->A</option>
+
+    </select>
+
+    <script>
+
+        let s = new URLSearchParams(document.location.search);
+        s = s.get("sort");
+        document.getElementById("sort").value = s;
+
+        function changeSort() {
+        const sort = document.getElementById("sort").value;
+        window.location.href = "?sort=" + sort;
+}
+
+</script>
+
+
     <ul>
         {% for b in books %}
         <li>{{ b.title}} - {{ b.author }}
