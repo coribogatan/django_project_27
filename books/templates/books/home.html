@@ -7,35 +7,39 @@ Home
 {% block content %}
   <!-- cod html semantic -->
 
-    <label for="sort">Sort by:</label>
-    <select id="sort" onchange="changeSort()">
+  <label for="sort">Sort by:</label>
+  <select id="sort" onchange="changeSort()">
 
-        <option value="asc">Title A->Z</option>
-        <option value="desc">Title Z->A</option>
+    <option value="asc">Title A->Z</option>
+    <option value="desc">Title Z->A</option>
 
-    </select>
+  </select>
 
-    <script>
+  <script>
 
-        let s = new URLSearchParams(document.location.search);
-        s = s.get("sort");
-        document.getElementById("sort").value = s;
+    let s = new URLSearchParams(document.location.search);
+    s = s.get("sort");
+    document.getElementById("sort").value = s;
 
-        function changeSort() {
-        const sort = document.getElementById("sort").value;
-        window.location.href = "?sort=" + sort;
-}
+    function changeSort() {
+      const sort = document.getElementById("sort").value;
+      window.location.href = "?sort=" + sort;
+    }
 
-</script>
+  </script>
 
-
-    <ul>
-        {% for b in books %}
-        <li>{{ b.title}} - {{ b.author }}
-            <a href="{% url 'delete_book' b.pk %}" >🗑️</a>
-            <a href="{% url 'update_book' b.pk %}" >✏️</a>
-        </li>
-        {% endfor %}
-    </ul>
+  <ul>
+    {% for b in books %}
+      <li>{{ b.title }} - {{ b.author }}
+        <a href="{% url 'list_user_books' b.user.pk %}" >{{ b.user.username }}</a>
+        {% if user.is_authenticated and user.pk == b.user.pk  %}
+          <a href="{% url 'delete_book' b.pk %}" >🗑️</a>
+          <a href="{% url 'update_book' b.pk %}" >✏️️</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 
 {% endblock %}
+@coribogatan
+Comment

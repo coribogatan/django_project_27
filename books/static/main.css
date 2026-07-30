@@ -23,6 +23,11 @@ nav {
     padding-top: 30px;
 }
 
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
 
 
 

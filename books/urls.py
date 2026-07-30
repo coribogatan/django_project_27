@@ -9,6 +9,7 @@ urlpatterns = [
     path("create_book/", views.create_book, name='create_book'),
     path("delete_book/<int:pk>/", views.delete_book, name='delete_book'),
     path("update_book/<int:pk>/", views.update_book, name='update_book'),
+    path("user/<int:user_pk>/books/", views.list_user_books, name='list_user_books'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
