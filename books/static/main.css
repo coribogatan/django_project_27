@@ -28,6 +28,10 @@ nav {
     justify-content: space-between;
 }
 
+.cover-image {
+    max-width: 121px !important;
+    max-height 121px !important;
+}
 
 
 
