@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 from .forms import BookForm
@@ -64,6 +65,9 @@ def create_book(request: HttpRequest):
             book = form.save(commit=False)
             book.user = request.user
             book.save()
+
+            # notify user that the book has benn created
+            messages.success(request, f"Book {book.title} was created!")
             return redirect("create_book")
 
     else:
@@ -79,6 +83,7 @@ def delete_book(request: HttpRequest, pk: int):
     if request.user.pk == book.user.pk:
          if request.method == "POST":
             book.delete()
+            messages.success(request, f"Book {book.title} was deleted!")
             return redirect("home")
          else:
             return render(request, "books/book_confirm_delete.html", context={"book": book})
