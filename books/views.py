@@ -65,11 +65,12 @@ def create_book(request: HttpRequest):
             book.user = request.user
             book.save()
             return redirect("create_book")
+
     else:
         #in acest caz, request-ul poate fi get, put, patch, delete, etc.
         form = BookForm()
         list1 = [10, 20, 30, 40]
-        return render(request, "books/book_form.html", context={"form": form, 'list1': list1})
+    return render(request, "books/book_form.html", context={"form": form, 'list1': list1})
 
 @login_required
 def delete_book(request: HttpRequest, pk: int):
